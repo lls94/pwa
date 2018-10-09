@@ -113,6 +113,7 @@ function notifyMe() {
             applicationServerKey: urlB64ToUint8Array(publicKey)
         }).then(function (subscription) {
             console.log('User is subscribed:', subscription);
+            document.write(JSON.stringify(subscription));
             console.log(JSON.stringify(subscription), 116);
             isSubscribed = true;
         }).catch(function (err) {
