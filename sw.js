@@ -26,12 +26,12 @@ self.addEventListener("activate", function (event) {
             console.log(4);
             return cache.addAll([
                 './',
-                'manifest.js',
-                'scripts/app.js',
-                'scripts/zepto.js',
-                'scripts/md5.js',
-                'style/index.css',
-                'images/change.png'
+                './manifest.js',
+                './scripts/app.js',
+                './scripts/zepto.js',
+                './scripts/md5.js',
+                './style/index.css',
+                './images/change.png'
             ])
         })
     ]))
