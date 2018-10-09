@@ -26,7 +26,7 @@ self.addEventListener("activate", function (event) {
             console.log(4);
             return cache.addAll([
                 './',
-                './manifest.js',
+                './manifest.json',
                 './scripts/app.js',
                 './scripts/zepto.js',
                 './scripts/md5.js',
