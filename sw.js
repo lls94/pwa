@@ -25,7 +25,7 @@ self.addEventListener("activate", function (event) {
         caches.open(cachesList[0]).then(function (cache) {
             console.log(4);
             return cache.addAll([
-                '/',
+                './',
                 'manifest.js',
                 'scripts/app.js',
                 'scripts/zepto.js',
