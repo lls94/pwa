@@ -19,20 +19,24 @@ function urlB64ToUint8Array(base64String) {
 
 
 function swRegister() {
-    navigator.serviceWorker.register("./sw.js", {
-        scope: "./"
-    }).then(function (reg) {
-        globalSwReg = reg;
-        if (checkIsSubscribed.bind(reg)()) {
-            console.log("订阅");
-        } else {
-            console.log("未订阅");
-        }
-        reg.update();
-        console.log("注册成功！");
-    }).catch(function () {
-        console.log("注册失败！");
-    })
+    try {
+        navigator.serviceWorker.register("./sw.js", {
+            scope: "./"
+        }).then(function (reg) {
+            globalSwReg = reg;
+            if (checkIsSubscribed.bind(reg)()) {
+                console.log("订阅");
+            } else {
+                console.log("未订阅");
+            }
+            reg.update();
+            console.log("注册成功！");
+        }).catch(function () {
+            console.log("注册失败！");
+        })
+    } catch (error) {
+        console.log(error, 38);
+    }
 };
 
 function transJsonp() {
