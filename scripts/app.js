@@ -101,7 +101,8 @@ function checkIsSubscribed() {
 
 
 $(() => {
-    if ("serviceWorker" in navigator && 'PushManager' in window) {
+    // && 'PushManager' in window
+    if ("serviceWorker" in navigator) {
         alert(105);
         swRegister();
     }
