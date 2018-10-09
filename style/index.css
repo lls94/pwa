@@ -1,0 +1,56 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    text-align: center;
+    line-height: 44px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.translang {
+    border-top: 1px solid rgba(230, 230, 230, .5);
+    border-bottom: 1px solid #e6e6e6;
+    overflow: hidden;
+}
+
+.translang>a {
+    float: left;
+    line-height: 48px;
+    text-align: center;
+}
+
+.from,
+.to {
+    width: 50%;
+}
+
+.change {
+    z-index: 1;
+    width: 48px;
+    height: 48px;
+    margin-right: -24px;
+    margin-left: -24px;
+    background: url(../images/change.png)center center no-repeat;
+    background-size: 30%;
+}
+
+.input {
+    padding: 10px 15px 0 12px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.input>textarea {
+    border: 0;
+    width: 90%;
+    height: 75px;
+    outline: 0;
+    font-size: 18px;
+}
+
+.result {
+    margin-top: 30px;
+    text-align: center;
+}
