@@ -19,6 +19,7 @@ function urlB64ToUint8Array(base64String) {
 
 
 function swRegister() {
+    alert(22);
     try {
         navigator.serviceWorker.register("./sw.js", {
             scope: "./"
