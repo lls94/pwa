@@ -16,10 +16,7 @@ function urlB64ToUint8Array(base64String) {
     return outputArray;
 }
 
-
-
 function swRegister() {
-    alert(22);
     try {
         navigator.serviceWorker.register("./sw.js", {
             scope: "./"
@@ -70,7 +67,6 @@ function transJsonp() {
                 console.log("错了！");
                 $(".result>span").html('');
             }
-
         },
         error: function (err) {
             $(".result>span").html('查询失败！');
@@ -82,7 +78,6 @@ function addEvent() {
     $(".input>textarea").blur(function () {
         transJsonp.bind(this)();
     });
-
 
     $("button").click(function () {
         notifyMe();
@@ -101,20 +96,16 @@ function checkIsSubscribed() {
 
 
 $(() => {
-    // && 'PushManager' in window
     if ("serviceWorker" in navigator) {
-        alert(105);
         swRegister();
     }
     addEvent();
 });
 
-
-
-
 function notifyMe() {
-    console.log(103);
-
+    if (!'PushManager' in window) {
+        alert("浏览器不支持推送服务！");
+    }
     try {
         globalSwReg.pushManager.subscribe({
             userVisibleOnly: true,
@@ -130,9 +121,6 @@ function notifyMe() {
     } catch (error) {
         console.log(error, 116)
     }
-
-    console.log(120);
-
     return;
     // 先检查浏览器是否支持
     if (!("Notification" in window)) {
