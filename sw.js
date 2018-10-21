@@ -1,4 +1,4 @@
-let version = 1;
+let version = 2;
 // new Date().getTime();
 
 let cachesList = [
