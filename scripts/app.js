@@ -1,5 +1,6 @@
 const publicKey = 'BA5PxCFdvj9J8AG5G3cQ0Pt2NMxHpxwN0moDG7jUI_jK4r6bwqps3W2NgzsWDQX3GvK2UopkjSbUxEysQCVpCBM';
 var vConsole = new VConsole();
+alert(3);
 
 function urlB64ToUint8Array(base64String) {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);
@@ -142,8 +143,4 @@ function notifyMe() {
             }
         });
     }
-
-
-    // 最后，如果执行到这里，说明用户已经拒绝对相关通知进行授权
-    // 出于尊重，我们不应该再打扰他们了
 }
