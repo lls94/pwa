@@ -20,7 +20,7 @@ function urlB64ToUint8Array(base64String) {
 function swRegister() {
     // serviceWorker  注册事件
     try {
-        navigator.serviceWorker.register("./sw.js?v=1", {
+        navigator.serviceWorker.register("./sw.js?v=2", {
             scope: "./"
         }).then(function (reg) {
             globalSwReg = reg;
