@@ -20,7 +20,9 @@ self.addEventListener("activate", function (event) {
     console.log('activate');
     event.waitUntil(Promise.all([
         self.clients.claim(),
+        // 删除缓存  资源
         caches.keys().then(function (cacheList) {
+            console.log(25);
             return Promise.all(
                 cacheList.map(function (cacheName) {
                     if (cachesList.indexOf(cacheName) == -1) {
@@ -29,10 +31,12 @@ self.addEventListener("activate", function (event) {
                 })
             );
         }),
+        // 缓存 资源
         caches.open(cachesList[0]).then(function (cache) {
-            // './',
+            console.log(36);
             // './scripts/app.js',
             return cache.addAll([
+                './',
                 './manifest.json',
                 './scripts/zepto.js',
                 './scripts/md5.js',
