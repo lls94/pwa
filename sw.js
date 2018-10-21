@@ -9,6 +9,7 @@ let cachesList = [
 
 
 self.addEventListener("install", function (event) {
+    console.log('install');
     event.waitUntil(
         event.waitUntil(self.skipWaiting())
     );
@@ -16,6 +17,7 @@ self.addEventListener("install", function (event) {
 
 
 self.addEventListener("activate", function (event) {
+    console.log('activate');
     event.waitUntil(Promise.all([
         self.clients.claim(),
         caches.keys().then(function (cacheList) {
@@ -28,11 +30,10 @@ self.addEventListener("activate", function (event) {
             );
         }),
         caches.open(cachesList[0]).then(function (cache) {
-            console.log(4);
+            // './scripts/app.js',
             return cache.addAll([
                 './',
                 './manifest.json',
-                './scripts/app.js',
                 './scripts/zepto.js',
                 './scripts/md5.js',
                 './style/index.css',
