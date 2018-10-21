@@ -58,7 +58,7 @@ self.addEventListener("fetch", function (event) {
             var request = event.request.clone();
             // 返回请求的响应数据
             return fetch(request).then(function (httpRes) {
-                console.log(httpRes, '响应数据');
+                // console.log(httpRes, '响应数据');
                 // URL对象
                 let requestUrl = new URL(event.request.url);
                 // 复制 响应
