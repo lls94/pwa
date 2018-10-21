@@ -1,6 +1,6 @@
 const publicKey = 'BA5PxCFdvj9J8AG5G3cQ0Pt2NMxHpxwN0moDG7jUI_jK4r6bwqps3W2NgzsWDQX3GvK2UopkjSbUxEysQCVpCBM';
 var vConsole = new VConsole();
-alert(55);
+alert(66);
 
 function urlB64ToUint8Array(base64String) {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);
