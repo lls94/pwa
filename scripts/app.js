@@ -1,5 +1,7 @@
-const publicKey = 'BA5PxCFdvj9J8AG5G3cQ0Pt2NMxHpxwN0moDG7jUI_jK4r6bwqps3W2NgzsWDQX3GvK2UopkjSbUxEysQCVpCBM';
-var vConsole = new VConsole();
+// var vConsole = new VConsole();
+const publicKey = 'BEvGz7_mk3I53v_hKzRwYorCKPpzvi1ZvFhnQ3TEHIemI65nzQMVghMCPI3-63V_arOQ_fdRiTWvBFrdNvEsJGY';
+let pushStatus = Notification.permission;
+let to = "zh";
 
 function urlB64ToUint8Array(base64String) {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);
@@ -16,30 +18,7 @@ function urlB64ToUint8Array(base64String) {
     return outputArray;
 }
 
-function swRegister() {
-    // serviceWorker  注册事件
-    try {
-        navigator.serviceWorker.register("./sw.js", {
-            scope: "./"
-        }).then(function (reg) {
-            globalSwReg = reg;
-            if (checkIsSubscribed.bind(reg)()) {
-                console.log("订阅");
-            } else {
-                console.log("未订阅");
-            }
-            reg.update();
-            console.log("注册成功！");
-        }).catch(function () {
-            console.log("注册失败！");
-        })
-    } catch (error) {
-        console.log(error);
-    }
-};
-
-// 百度翻译接口
-function transJsonp() {
+function transJsonp() { // 百度翻译接口
     console.log(this, 20);
     let appid = "20181007000216094";
     let key = "TBtPAVPayrgJKdlRH6b_";
@@ -58,7 +37,7 @@ function transJsonp() {
             sign: MD5(appid + query + salt + key),
             q: query,
             from: "auto",
-            to: "zh"
+            to: to
         },
         success: function (data) {
             try {
@@ -74,17 +53,37 @@ function transJsonp() {
             $(".result>span").html('查询失败！');
         }
     });
-}
-// 百度翻译接口
+    // 百度翻译接口
+};
 
-function addEvent() {
-    // 失焦翻译文字
-    $(".input>textarea").blur(function () {
+function init() {
+
+    $(".status").text({
+        default: '询问',
+        granted: '允许',
+        denied: '禁止'
+    } [Notification.permission]);
+
+
+    $(".input>textarea").blur(function () { // 失焦翻译文字
         transJsonp.bind(this)();
     });
 
     $("button").click(function () {
         notifyMe();
+    });
+    $(".change").click(function () {
+        to = {
+            true: 'en',
+            false: 'zh'
+        } [to == 'zh'];
+        console.log(to, 77);
+        let lang = {
+            zh: '中文',
+            en: '英语'
+        };
+        $('.from').text($('.to').text());
+        $('.to').text(lang[to]);
     })
 }
 
@@ -100,13 +99,7 @@ function checkIsSubscribed() {
 }
 
 
-(() => {
-    // 注册 serviceWorker
-    if ("serviceWorker" in navigator) {
-        swRegister();
-    }
-    addEvent();
-})();
+
 
 
 function notifyMe() {
@@ -119,36 +112,27 @@ function notifyMe() {
         globalSwReg.pushManager.subscribe({
             userVisibleOnly: true,
             applicationServerKey: urlB64ToUint8Array(publicKey)
-        }).then(function (subscription) {
-            console.log('User is subscribed:', subscription);
-            document.write(JSON.stringify(subscription));
-            console.log(JSON.stringify(subscription), 116);
+        }).then(function (PushSubscription) {
+            if (pushStatus != 'granted' && Notification.permission == 'granted') {
+                new Notification('推送服务订阅成功！');
+            }
+            console.log(JSON.stringify(PushSubscription), '订阅推送配置数据');
             isSubscribed = true;
         }).catch(function (err) {
-            console.log('Failed to subscribe the user: ', err);
+            new Notification('推送服务订阅失败！');
+            console.log('获取订阅服务失败', err);
         });
     } catch (error) {
         console.log(error, 116)
     }
     return;
-    // 先检查浏览器是否支持
-    if (!("Notification" in window)) {
-        alert("This browser does not support desktop notification");
-    }
+};
 
-    // 检查用户是否同意接受通知
-    else if (Notification.permission === "granted") {
-        // If it's okay let's create a notification
-        var notification = new Notification("Hi there!");
-    }
 
-    // 否则我们需要向用户获取权限
-    else if (Notification.permission !== 'denied') {
-        Notification.requestPermission(function (permission) {
-            // 如果用户同意，就可以向他们发送通知
-            if (permission === "granted") {
-                var notification = new Notification("Hi there!");
-            }
-        });
-    }
-}
+$("<script>").attr({
+    src: './scripts/sw-register.js?v=' + (new Date().getTime())
+}).appendTo($("body"));
+
+$(() => {
+    init();
+})
