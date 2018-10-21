@@ -64,14 +64,10 @@ function init() {
         denied: '禁止'
     } [Notification.permission]);
 
-
     $(".input>textarea").blur(function () { // 失焦翻译文字
         transJsonp.bind(this)();
     });
 
-    $("button").click(function () {
-        notifyMe();
-    });
     $(".change").click(function () {
         to = {
             true: 'en',
@@ -126,6 +122,19 @@ function notifyMe() {
         console.log(error, 116)
     }
     return;
+};
+
+function cancel() {
+    globalSwReg.pushManager.getSubscription()
+        .then(function (subscription) {
+            if (subscription) {
+                new Notification('取消订阅成功');
+                return subscription.unsubscribe();
+            }
+        })
+        .catch(function (error) {
+            console.log('取消失败', error);
+        })
 };
 
 
