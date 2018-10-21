@@ -49,7 +49,7 @@ function transJsonp() {
         cache: true,
         jsonpCallback: "cbFn",
         dataType: 'jsonp',
-        url: "http://api.fanyi.baidu.com/api/trans/vip/translate",
+        url: "https://api.fanyi.baidu.com/api/trans/vip/translate",
         data: {
             appid: appid,
             salt: salt,
