@@ -6,8 +6,6 @@ let cachesList = [
     'fanyi-cache-v' + version
 ];
 
-
-
 self.addEventListener("install", function (event) {
     console.log('install');
     event.waitUntil(
