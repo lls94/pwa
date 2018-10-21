@@ -30,9 +30,9 @@ self.addEventListener("activate", function (event) {
             );
         }),
         caches.open(cachesList[0]).then(function (cache) {
+            // './',
             // './scripts/app.js',
             return cache.addAll([
-                './',
                 './manifest.json',
                 './scripts/zepto.js',
                 './scripts/md5.js',
