@@ -1,4 +1,5 @@
 'v1';
+console.log(222);
 self.addEventListener("install", function (event) {
     event.waitUntil(
         event.waitUntil(self.skipWaiting())
