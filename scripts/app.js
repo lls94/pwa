@@ -1,6 +1,6 @@
 const publicKey = 'BA5PxCFdvj9J8AG5G3cQ0Pt2NMxHpxwN0moDG7jUI_jK4r6bwqps3W2NgzsWDQX3GvK2UopkjSbUxEysQCVpCBM';
 var vConsole = new VConsole();
-alert(44);
+alert(33);
 
 function urlB64ToUint8Array(base64String) {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);
@@ -18,6 +18,7 @@ function urlB64ToUint8Array(base64String) {
 }
 
 function swRegister() {
+    // serviceWorker  注册事件
     try {
         navigator.serviceWorker.register("./sw.js", {
             scope: "./"
@@ -34,10 +35,11 @@ function swRegister() {
             console.log("注册失败！");
         })
     } catch (error) {
-        console.log(error, 38);
+        console.log(error);
     }
 };
 
+// 百度翻译接口
 function transJsonp() {
     console.log(this, 20);
     let appid = "20181007000216094";
@@ -74,8 +76,10 @@ function transJsonp() {
         }
     });
 }
+// 百度翻译接口
 
 function addEvent() {
+    // 失焦翻译文字
     $(".input>textarea").blur(function () {
         transJsonp.bind(this)();
     });
@@ -84,6 +88,7 @@ function addEvent() {
         notifyMe();
     })
 }
+
 
 function checkIsSubscribed() {
     globalSwReg.pushManager.getSubscription().then(function (subscription) {
@@ -96,16 +101,20 @@ function checkIsSubscribed() {
 }
 
 
-$(() => {
+(() => {
+    // 注册 serviceWorker
     if ("serviceWorker" in navigator) {
         swRegister();
     }
     addEvent();
-});
+})();
+
 
 function notifyMe() {
+    // 订阅 推送服务
     if (!'PushManager' in window) {
         alert("浏览器不支持推送服务！");
+        return false;
     }
     try {
         globalSwReg.pushManager.subscribe({

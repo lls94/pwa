@@ -1,15 +1,19 @@
-'v3';
+let version = 1;
 // new Date().getTime();
+
+let cachesList = [
+    'res-cache-v' + version,
+    'fanyi-cache-v' + version
+];
+
+
+
 self.addEventListener("install", function (event) {
     event.waitUntil(
         event.waitUntil(self.skipWaiting())
     );
 });
 
-let cachesList = [
-    'res-cache-v1',
-    'fanyi-cache-v1'
-];
 
 self.addEventListener("activate", function (event) {
     event.waitUntil(Promise.all([
@@ -38,6 +42,7 @@ self.addEventListener("activate", function (event) {
     ]))
 });
 
+// 请求 劫持
 self.addEventListener("fetch", function (event) {
     event.respondWith(
         caches.match(event.request).then(function (response) {
@@ -68,6 +73,7 @@ self.addEventListener("fetch", function (event) {
     )
 });
 
+// 推送监听 事件
 self.addEventListener('push', function (event) {
     console.log('[Service Worker] Push Received.');
     console.log(`[Service Worker] Push had this data: "${event.data.text()}"`);
@@ -83,7 +89,7 @@ self.addEventListener('push', function (event) {
 });
 
 
-
+// 推送消息 点击 事件
 self.addEventListener('notificationclick', function (event) {
     console.log('[Service Worker] Notification click Received.');
 
