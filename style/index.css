@@ -16,7 +16,8 @@ header {
     overflow: hidden;
 }
 
-.translang>a {
+.translang>a,
+.translang>span {
     float: left;
     line-height: 48px;
     text-align: center;
