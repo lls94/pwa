@@ -18,7 +18,7 @@ function urlB64ToUint8Array(base64String) {
 
 function swRegister() {
     try {
-        navigator.serviceWorker.register("./sw.js?time=1", {
+        navigator.serviceWorker.register("./sw.js?time=" + new Date().getTime(), {
             scope: "./"
         }).then(function (reg) {
             globalSwReg = reg;
