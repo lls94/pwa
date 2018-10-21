@@ -16,8 +16,7 @@ header {
     overflow: hidden;
 }
 
-.translang>a,
-.translang>span {
+.translang>a {
     float: left;
     line-height: 48px;
     text-align: center;
@@ -25,15 +24,8 @@ header {
 
 .from,
 .to {
-    width: 50%;
-}
-
-.from {
     margin-right: -24px;
-}
-
-.to {
-    margin-left: -24px;
+    width: 50%;
 }
 
 .change {
