@@ -1,4 +1,4 @@
-'v1';
+'v2';
 self.addEventListener("install", function (event) {
     event.waitUntil(
         event.waitUntil(self.skipWaiting())
