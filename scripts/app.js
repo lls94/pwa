@@ -19,7 +19,7 @@ function urlB64ToUint8Array(base64String) {
 
 function swRegister() {
     try {
-        navigator.serviceWorker.register("./sw.js?v=1", {
+        navigator.serviceWorker.register("./sw.js", {
             scope: "./"
         }).then(function (reg) {
             globalSwReg = reg;
