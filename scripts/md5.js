@@ -1,4 +1,4 @@
-console.log('md1');
+console.error('md2');
 var MD5 = function (string) {
 
     function RotateLeft(lValue, iShiftBits) {
