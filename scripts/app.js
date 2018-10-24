@@ -59,13 +59,15 @@ function transJsonp() { // 百度翻译接口
 };
 
 function init() {
-
     $(".status").text({
         default: '询问',
         granted: '允许',
         denied: '禁止',
         'undefined': '不支持'
     } [(window.Notification && Notification.permission)]);
+    if (window.Notification) {
+        $("button").hide();
+    }
 
     $(".input>textarea").blur(function () { // 失焦翻译文字
         transJsonp.bind(this)();
