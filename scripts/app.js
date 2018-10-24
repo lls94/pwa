@@ -3,7 +3,6 @@ const PublicKey = 'BEvGz7_mk3I53v_hKzRwYorCKPpzvi1ZvFhnQ3TEHIemI65nzQMVghMCPI3-6
 
 let pushStatus = (window.Notification && Notification.permission);
 let to = "zh";
-alert(116)
 
 function urlB64ToUint8Array(base64String) {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);
