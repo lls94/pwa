@@ -1,9 +1,9 @@
 var vConsole = new VConsole();
 const PublicKey = 'BEvGz7_mk3I53v_hKzRwYorCKPpzvi1ZvFhnQ3TEHIemI65nzQMVghMCPI3-63V_arOQ_fdRiTWvBFrdNvEsJGY';
 
-alert(44);
 let pushStatus = (window.Notification && Notification.permission);
 let to = "zh";
+alert(123)
 
 function urlB64ToUint8Array(base64String) {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);
