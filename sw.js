@@ -1,5 +1,4 @@
 let version = new Date().getTime();
-111;
 // new Date().getTime();
 let cachesList = [
     'res-cache-v' + version,
@@ -16,8 +15,8 @@ self.addEventListener("install", function (event) {
 self.addEventListener("activate", function (event) {
     console.log('activate事件');
     event.waitUntil(Promise.all([
-        // 删除缓存  资源
-        caches.keys().then(function (cacheList) {
+        self.clients.claim(), // https://developer.mozilla.org/zh-CN/docs/Web/API/Clients/claim
+        caches.keys().then(function (cacheList) { // 删除缓存  资源
             console.log(25);
             return Promise.all(
                 cacheList.map(function (cacheName) {
