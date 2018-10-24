@@ -2,7 +2,7 @@ function swRegister() {
     // console.log('sw注册！');
     // serviceWorker  注册事件
     try {
-        navigator.serviceWorker.register("./sw.js?v=4", {
+        navigator.serviceWorker.register("./sw.js?v=1", {
             scope: "./"
         }).then(function (SWRegistration) {
             // reg：Service Worker 服务注册对象

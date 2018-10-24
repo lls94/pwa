@@ -30,7 +30,6 @@ self.addEventListener("activate", function (event) {
         }),
         // 缓存 网页资源
         caches.open(cachesList[0]).then(function (cache) {
-            console.log(111111111111111111111111);
             return cache.addAll([
                 './',
                 './manifest.json',
