@@ -33,7 +33,7 @@ self.addEventListener("activate", function (event) {
             return cache.addAll([
                 './',
                 './manifest.json',
-                './scripts/app.js',
+                './scripts/app.js?v=' + version,
                 './scripts/vconsole.min.js',
                 './scripts/zepto.js',
                 './scripts/md5.js',
