@@ -1,5 +1,5 @@
 let version = new Date().getTime();
-444;
+111;
 // new Date().getTime();
 let cachesList = [
     'res-cache-v' + version,
@@ -10,7 +10,7 @@ self.addEventListener("install", function (event) {
     // 可以缓存一些静态资源
     console.log('install事件');
     //更新 serviceWorker 文件时 跳过 等待,会立即 更新 文件
-    event.waitUntil(self.skipWaiting());
+    // event.waitUntil(self.skipWaiting());
 });
 
 

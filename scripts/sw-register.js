@@ -1,17 +1,17 @@
 // let v = 5;
 
-function swRegister() {
+function swRegister(v = '') {
     // console.log('sw注册！');
     // serviceWorker  注册事件
     try {
         // sw.js 可能会因为浏览器 缓存 得不到更新，可以增加个 版本号
-        navigator.serviceWorker.register("./sw.js", {
+        navigator.serviceWorker.register("./sw.js" + v, {
             scope: "./"
         }).then(function (SWRegistration) {
-            setInterval(() => {
+            console.log(SWRegistration, 11);
+            $("button").eq(2).click(() => {
                 SWRegistration.update(); //24小时 至少会更新一次   https://developer.mozilla.org/zh-CN/docs/Web/API/ServiceWorkerRegistration/update
-                console.log('更新sw.js文件');
-            }, 1500000);
+            });
 
             // reg：Service Worker 服务注册对象
             globalSwReg = SWRegistration;
@@ -31,6 +31,11 @@ function swRegister() {
 
 $(() => { // 注册 serviceWorker
     if ("serviceWorker" in navigator) {
-        swRegister();
+        // swRegister();
+        $("button").eq(3).click(() => {
+            let v;
+            v = "?v=" + new Date().getTime();
+            swRegister(v);
+        });
     }
 });
