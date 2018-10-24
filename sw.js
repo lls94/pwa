@@ -7,7 +7,8 @@ let cachesList = [
 
 self.addEventListener("install", function (event) {
     console.log('install');
-    event.waitUntil(self.skipWaiting());
+    //更新 serviceWorker 文件时 跳过 等待
+    // event.waitUntil(self.skipWaiting());
 });
 
 
@@ -98,3 +99,7 @@ self.addEventListener('notificationclick', function (event) {
         clients.openWindow('https://lavas.baidu.com/')
     );
 });
+
+
+
+console.log('执行sw.js文件！');
