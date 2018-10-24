@@ -92,8 +92,10 @@ function init() {
 function checkIsSubscribed() {
     globalSwReg.pushManager.getSubscription().then(function (subscription) {
         if (subscription === null) {
+            console.log(95);
             return false;
         } else {
+            console.log(98);
             return true;
         }
     })
