@@ -1,4 +1,4 @@
-// let v = new Date().getTime();
+let v = 1;
 
 function swRegister() {
     // console.log('sw注册！');
