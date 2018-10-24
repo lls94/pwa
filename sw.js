@@ -6,16 +6,15 @@ let cachesList = [
 ];
 
 self.addEventListener("install", function (event) {
-    console.log('install');
-    //更新 serviceWorker 文件时 跳过 等待
-    // event.waitUntil(self.skipWaiting());
+    console.log('install事件');
+    //更新 serviceWorker 文件时 跳过 等待,会立即 更新 文件
+    event.waitUntil(self.skipWaiting());
 });
 
 
 self.addEventListener("activate", function (event) {
-    console.log('activate');
+    console.log('activate事件');
     event.waitUntil(Promise.all([
-        self.clients.claim(),
         // 删除缓存  资源
         caches.keys().then(function (cacheList) {
             console.log(25);
