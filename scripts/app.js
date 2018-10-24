@@ -66,7 +66,7 @@ function init() {
         granted: '允许',
         denied: '禁止',
         false: '不支持'
-    } [(window.Notification && Notification.permission) || 'false']);
+    } [(window.Notification && window.Notification.permission) || 'false']);
 
     $(".input>textarea").blur(function () { // 失焦翻译文字
         transJsonp.bind(this)();
