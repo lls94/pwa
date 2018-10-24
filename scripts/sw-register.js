@@ -7,15 +7,15 @@ function swRegister() {
         navigator.serviceWorker.register("./sw.js?v=" + v, {
             scope: "./"
         }).then(function (SWRegistration) {
-            // // reg：Service Worker 服务注册对象
-            // globalSwReg = SWRegistration;
-            // if (checkIsSubscribed.bind(SWRegistration)()) {
-            //     console.log("订阅");
-            // } else {
-            //     console.log("未订阅");
-            // }
-            // // SWRegistration.update();
-            // console.log("注册成功！");
+            // reg：Service Worker 服务注册对象
+            globalSwReg = SWRegistration;
+            if (checkIsSubscribed.bind(SWRegistration)()) {
+                console.log("订阅");
+            } else {
+                console.log("未订阅");
+            }
+            // SWRegistration.update();
+            console.log("注册成功！");
         }).catch(function () {
             console.log("注册失败！");
         })

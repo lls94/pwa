@@ -90,6 +90,7 @@ function init() {
 
 
 function checkIsSubscribed() {
+    console.log(globalSwReg.pushManager, 93);
     globalSwReg.pushManager.getSubscription().then(function (subscription) {
         if (subscription === null) {
             console.log(95);
