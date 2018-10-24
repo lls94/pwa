@@ -65,6 +65,7 @@ function init() {
         denied: '禁止',
         'undefined': '不支持'
     } [(window.Notification && Notification.permission)]);
+
     if (window.Notification) {
         $("button").hide();
     }
