@@ -1,4 +1,4 @@
-let v = 8;
+let v = 9;
 
 function swRegister() {
     // console.log('sw注册！');
