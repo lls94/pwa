@@ -3,7 +3,6 @@ const PublicKey = 'BEvGz7_mk3I53v_hKzRwYorCKPpzvi1ZvFhnQ3TEHIemI65nzQMVghMCPI3-6
 
 
 let pushStatus = (window.Notification && Notification.permission);
-console.log(pushStatus, 4)
 let to = "zh";
 
 function urlB64ToUint8Array(base64String) {
@@ -62,90 +61,90 @@ function transJsonp() { // 百度翻译接口
 function init() {
 
     $(".status").text({
-        default: '询问',
-        granted: '允许',
-        denied: '禁止',
-        'false': '不支持'
-    } [(window.Notification && window.Notification.permission) || 'false']);
+            default: '询问',
+            granted: '允许',
+            denied: '禁止',
+            'undefined': '不支持'
+        } [(window.Notification && Notification.permission));
 
-    $(".input>textarea").blur(function () { // 失焦翻译文字
-        transJsonp.bind(this)();
-    });
-
-    $(".change").click(function () {
-        to = {
-            true: 'en',
-            false: 'zh'
-        } [to == 'zh'];
-        console.log(to, 77);
-        let lang = {
-            zh: '中文',
-            en: '英语'
-        };
-        $('.from').text($('.to').text());
-        $('.to').text(lang[to]);
-    })
-}
-
-
-function checkIsSubscribed() {
-    globalSwReg.pushManager.getSubscription().then(function (subscription) {
-        if (subscription === null) {
-            return false;
-        } else {
-            return true;
-        }
-    })
-}
-
-
-
-
-
-function notifyMe() {
-    // 订阅 推送服务
-    if (!'PushManager' in window || pushStatus) {
-        alert("浏览器不支持推送服务！");
-        return false;
-    }
-    try {
-        globalSwReg.pushManager.subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: urlB64ToUint8Array(PublicKey)
-        }).then(function (PushSubscription) {
-            if (pushStatus != 'granted' && Notification.permission == 'granted') {
-                new Notification('推送服务订阅成功！');
-            }
-            console.log(JSON.stringify(PushSubscription), '订阅推送配置数据');
-            isSubscribed = true;
-        }).catch(function (err) {
-            new Notification('推送服务订阅失败！');
-            console.log('获取订阅服务失败', err);
+        $(".input>textarea").blur(function () { // 失焦翻译文字
+            transJsonp.bind(this)();
         });
-    } catch (error) {
-        console.log(error, 116)
-    }
-    return;
-};
 
-function cancel() {
-    globalSwReg.pushManager.getSubscription()
-        .then(function (subscription) {
-            if (subscription) {
-                new Notification('取消订阅成功');
-                return subscription.unsubscribe();
+        $(".change").click(function () {
+            to = {
+                true: 'en',
+                false: 'zh'
+            } [to == 'zh'];
+            console.log(to, 77);
+            let lang = {
+                zh: '中文',
+                en: '英语'
+            };
+            $('.from').text($('.to').text());
+            $('.to').text(lang[to]);
+        })
+    }
+
+
+    function checkIsSubscribed() {
+        globalSwReg.pushManager.getSubscription().then(function (subscription) {
+            if (subscription === null) {
+                return false;
+            } else {
+                return true;
             }
         })
-        .catch(function (error) {
-            console.log('取消失败', error);
-        })
-};
+    }
 
 
-$("<script>").attr({
-    src: './scripts/sw-register.js?v=' + (new Date().getTime())
-}).appendTo($("body"));
 
-$(() => {
-    init();
-})
+
+
+    function notifyMe() {
+        // 订阅 推送服务
+        if (!'PushManager' in window || pushStatus) {
+            alert("浏览器不支持推送服务！");
+            return false;
+        }
+        try {
+            globalSwReg.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: urlB64ToUint8Array(PublicKey)
+            }).then(function (PushSubscription) {
+                if (pushStatus != 'granted' && Notification.permission == 'granted') {
+                    new Notification('推送服务订阅成功！');
+                }
+                console.log(JSON.stringify(PushSubscription), '订阅推送配置数据');
+                isSubscribed = true;
+            }).catch(function (err) {
+                new Notification('推送服务订阅失败！');
+                console.log('获取订阅服务失败', err);
+            });
+        } catch (error) {
+            console.log(error, 116)
+        }
+        return;
+    };
+
+    function cancel() {
+        globalSwReg.pushManager.getSubscription()
+            .then(function (subscription) {
+                if (subscription) {
+                    new Notification('取消订阅成功');
+                    return subscription.unsubscribe();
+                }
+            })
+            .catch(function (error) {
+                console.log('取消失败', error);
+            })
+    };
+
+
+    $("<script>").attr({
+        src: './scripts/sw-register.js?v=' + (new Date().getTime())
+    }).appendTo($("body"));
+
+    $(() => {
+        init();
+    })
