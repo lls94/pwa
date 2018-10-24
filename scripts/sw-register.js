@@ -5,7 +5,7 @@ function swRegister() {
     // serviceWorker  注册事件
     try {
         // sw.js 可能会因为浏览器 缓存 得不到更新，可以增加个 版本号
-        navigator.serviceWorker.register("./sw.js" + v, {
+        navigator.serviceWorker.register("./sw.js", {
             scope: "./"
         }).then(function (SWRegistration) {
             setInterval(() => {
