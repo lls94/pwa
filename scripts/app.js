@@ -65,7 +65,7 @@ function init() {
         default: '询问',
         granted: '允许',
         denied: '禁止',
-        false: '不支持'
+        'false': '不支持'
     } [(window.Notification && window.Notification.permission) || 'false']);
 
     $(".input>textarea").blur(function () { // 失焦翻译文字
