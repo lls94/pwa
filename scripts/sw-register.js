@@ -11,7 +11,7 @@ function swRegister() {
             setInterval(() => {
                 SWRegistration.update(); //24小时 至少会更新一次   https://developer.mozilla.org/zh-CN/docs/Web/API/ServiceWorkerRegistration/update
                 console.log('更新sw.js文件');
-            }, 2888);
+            }, 5000);
 
             // reg：Service Worker 服务注册对象
             globalSwReg = SWRegistration;
