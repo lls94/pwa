@@ -1,5 +1,4 @@
 var vConsole = new VConsole();
-alert(2)
 const PublicKey = 'BEvGz7_mk3I53v_hKzRwYorCKPpzvi1ZvFhnQ3TEHIemI65nzQMVghMCPI3-63V_arOQ_fdRiTWvBFrdNvEsJGY';
 
 
