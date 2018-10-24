@@ -1,4 +1,4 @@
-let version = 2;
+let version = new Date().getTime();
 // new Date().getTime();
 let cachesList = [
     'res-cache-v' + version,
