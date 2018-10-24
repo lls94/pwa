@@ -3,7 +3,7 @@ const PublicKey = 'BEvGz7_mk3I53v_hKzRwYorCKPpzvi1ZvFhnQ3TEHIemI65nzQMVghMCPI3-6
 
 
 
-let pushStatus = (Notification && Notification.permission) || 'denied';
+let pushStatus = (window.Notification && Notification.permission) || false;
 console.log(pushStatus, 4)
 let to = "zh";
 
@@ -104,7 +104,7 @@ function checkIsSubscribed() {
 
 function notifyMe() {
     // 订阅 推送服务
-    if (!'PushManager' in window) {
+    if (!'PushManager' in window || pushStatus) {
         alert("浏览器不支持推送服务！");
         return false;
     }
