@@ -1,6 +1,7 @@
 // var vConsole = new VConsole();
-const publicKey = 'BEvGz7_mk3I53v_hKzRwYorCKPpzvi1ZvFhnQ3TEHIemI65nzQMVghMCPI3-63V_arOQ_fdRiTWvBFrdNvEsJGY';
-let pushStatus = Notification.permission;
+const PublicKey = 'BEvGz7_mk3I53v_hKzRwYorCKPpzvi1ZvFhnQ3TEHIemI65nzQMVghMCPI3-63V_arOQ_fdRiTWvBFrdNvEsJGY';
+let pushStatus = (Notification && Notification.permission) || 'denied';
+console.log(pushStatus)
 let to = "zh";
 
 function urlB64ToUint8Array(base64String) {
@@ -107,7 +108,7 @@ function notifyMe() {
     try {
         globalSwReg.pushManager.subscribe({
             userVisibleOnly: true,
-            applicationServerKey: urlB64ToUint8Array(publicKey)
+            applicationServerKey: urlB64ToUint8Array(PublicKey)
         }).then(function (PushSubscription) {
             if (pushStatus != 'granted' && Notification.permission == 'granted') {
                 new Notification('推送服务订阅成功！');
