@@ -47,7 +47,7 @@ self.addEventListener("activate", function (event) {
 // 请求 劫持
 self.addEventListener("fetch", function (event) {
     // console.log(event.request, 52);
-    event.respondWith(
+    event.respondWith( //修改响应
         caches.match(event.request).then(function (response) {
             // 响应已缓存
             if (response) {
