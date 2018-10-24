@@ -51,7 +51,6 @@ self.addEventListener("fetch", function (event) {
         caches.match(event.request).then(function (response) {
             // 响应已缓存
             if (response) {
-                return new Response('12345');
                 return response;
             };
             // 复制请求
