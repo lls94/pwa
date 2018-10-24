@@ -2,8 +2,7 @@ var vConsole = new VConsole();
 const PublicKey = 'BEvGz7_mk3I53v_hKzRwYorCKPpzvi1ZvFhnQ3TEHIemI65nzQMVghMCPI3-63V_arOQ_fdRiTWvBFrdNvEsJGY';
 
 
-
-let pushStatus = (window.Notification && Notification.permission) || false;
+let pushStatus = (window.Notification && Notification.permission);
 console.log(pushStatus, 4)
 let to = "zh";
 
