@@ -14,7 +14,7 @@ function swRegister() {
             } else {
                 console.log("未订阅");
             }
-            // SWRegistration.update();
+            SWRegistration.update();
             console.log("注册成功！");
         }).catch(function () {
             console.log("注册失败！");
