@@ -22,7 +22,7 @@ self.addEventListener("activate", function (event) {
             console.log(25);
             return Promise.all(
                 cacheList.map(function (cacheName) {
-                    if (cachesList.indexOf(cacheName) == -1) {
+                    if (cachesList.indexOf(cacheName) == -1 || true) {
                         return caches.delete(cacheName);
                     }
                 })
