@@ -7,7 +7,6 @@ let cachesList = [
 
 self.addEventListener("install", function (event) {
     console.log('install');
-    self.skipWaiting();
     event.waitUntil(
         event.waitUntil(self.skipWaiting())
     );
