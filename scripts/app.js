@@ -66,7 +66,7 @@ function init() {
     } [(window.Notification && Notification.permission)]);
 
     if (window.Notification) {
-        $(".button").slice(0, 2).hide()
+        // $(".button").slice(0, 2).hide()
     }
 
     $(".input>textarea").blur(function () { // 失焦翻译文字
@@ -109,7 +109,7 @@ function checkIsSubscribed() {
 
 function notifyMe() {
     // 订阅 推送服务
-    if (!'PushManager' in window || pushStatus) {
+    if (!'PushManager' in window) {
         alert("浏览器不支持推送服务！");
         return false;
     }

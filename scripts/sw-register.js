@@ -11,7 +11,6 @@ function swRegister(v = '') {
             $(".button").eq(2).click(() => {
                 SWRegistration.update(); //24小时 至少会更新一次   https://developer.mozilla.org/zh-CN/docs/Web/API/ServiceWorkerRegistration/update
             });
-
             // reg：Service Worker 服务注册对象
             globalSwReg = SWRegistration;
             if (checkIsSubscribed.bind(SWRegistration)()) {
