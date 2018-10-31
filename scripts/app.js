@@ -1,4 +1,4 @@
-var vConsole = new VConsole();
+// var vConsole = new VConsole();
 const PublicKey = 'BNUBcI5N-N5ZJr_mP2VjsKKPH-4fh4em0s8tsIO4k7fVIeuHn5IWpzwKWzFGrG9SWCM171x23BOnicSjcZBFGq0';
 
 let pushStatus = (window.Notification && Notification.permission);
@@ -90,13 +90,10 @@ function init() {
 
 
 function checkIsSubscribed() {
-    console.log(globalSwReg, 93);
     globalSwReg.pushManager && globalSwReg.pushManager.getSubscription().then(function (subscription) {
         if (subscription === null) {
-            console.log(95);
             return false;
         } else {
-            console.log(98);
             return true;
         }
     })
