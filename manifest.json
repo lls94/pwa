@@ -4,9 +4,9 @@
   "description": "A simply readable Hacker News app.",
   "theme_color": "red",
   "background_color": "#2196f3",
-  "display": "minimal-ui",
+  "display": "standalone",
   "orientation": "landscape",
-  "start_url": ".",
+  "start_url": "./",
   "icons": [{
       "src": "images/icons/icon-72x72.png",
       "sizes": "72x72",
@@ -48,7 +48,6 @@
       "type": "image/png"
     }
   ],
-  "splash_pages": null,
   "related_applications": [{
     "platform": "web",
     "url": "./"
