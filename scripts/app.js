@@ -66,7 +66,7 @@ function init() {
     } [(window.Notification && Notification.permission)]);
 
     if (window.Notification) {
-        $(".button[onclick]").hide();
+        $(".button").slice(0, 2).hide()
     }
 
     $(".input>textarea").blur(function () { // 失焦翻译文字
