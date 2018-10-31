@@ -1,4 +1,6 @@
-// var vConsole = new VConsole();
+if (!window.Notification) {
+    var vConsole = new VConsole();
+}
 const PublicKey = 'BNUBcI5N-N5ZJr_mP2VjsKKPH-4fh4em0s8tsIO4k7fVIeuHn5IWpzwKWzFGrG9SWCM171x23BOnicSjcZBFGq0';
 
 let pushStatus = (window.Notification && Notification.permission);
