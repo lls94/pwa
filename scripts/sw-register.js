@@ -8,7 +8,7 @@ function swRegister(v = '') {
             scope: "./"
         }).then(function (SWRegistration) {
             console.log(SWRegistration, 11);
-            $("button").eq(2).click(() => {
+            $(".button").eq(2).click(() => {
                 SWRegistration.update(); //24小时 至少会更新一次   https://developer.mozilla.org/zh-CN/docs/Web/API/ServiceWorkerRegistration/update
             });
 
@@ -32,7 +32,7 @@ $(() => { // 注册 serviceWorker
     if ("serviceWorker" in navigator) {
         swRegister();
         return;
-        $("button").eq(3).click(() => {
+        $(".button").eq(3).click(() => {
             let v;
             v = "?v=" + new Date().getTime();
             swRegister(v);

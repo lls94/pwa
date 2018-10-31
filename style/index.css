@@ -3,6 +3,13 @@
     margin: 0;
 }
 
+body>.button {
+    display: inline-block;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
 header {
     text-align: center;
     line-height: 44px;
