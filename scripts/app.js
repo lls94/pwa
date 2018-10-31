@@ -65,8 +65,8 @@ function init() {
         'undefined': '不支持'
     } [(window.Notification && Notification.permission)]);
 
-    if (window.Notification) {
-        // $(".button").slice(0, 2).hide()
+    if (!window.Notification) {
+        $(".button").slice(0, 2).hide()
     }
 
     $(".input>textarea").blur(function () { // 失焦翻译文字
