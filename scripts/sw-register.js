@@ -1,7 +1,6 @@
 // let v = 5;
 
 function swRegister(v = '') {
-    // console.log('sw注册！');
     // serviceWorker  注册事件
     try {
         // sw.js 可能会因为浏览器 缓存 得不到更新，可以增加个 版本号
@@ -31,7 +30,8 @@ function swRegister(v = '') {
 
 $(() => { // 注册 serviceWorker
     if ("serviceWorker" in navigator) {
-        // swRegister();
+        swRegister();
+        return;
         $("button").eq(3).click(() => {
             let v;
             v = "?v=" + new Date().getTime();
